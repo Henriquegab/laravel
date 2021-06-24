@@ -8,7 +8,12 @@ class FornecedorController extends Controller
 {
     public function index() {
         $fornecedores = [
-            0 => ['nome'=>'Fornecedor 1', 'status' => 'N', 'ddd'=> '38', 'telefone' =>'4002-8922']
+            0 => [
+                'nome'=>'Fornecedor 1',
+                'status' => 'N', 
+                'ddd'=> '38', 
+                'telefone' =>'4002-8922'
+                ]
         ];
 
         
