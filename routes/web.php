@@ -31,7 +31,7 @@ Route::get('/sobrenos', [SobreNosController::class, 'sobre'])->name('site.sobren
 
 
 Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato');
-Route::post('/contato', [ContatoController::class, 'contato'])->name('site.contato');
+Route::post('/contato', [ContatoController::class, 'salvar'])->name('site.contato');
 Route::get('/contato/{name}/{taxid}/{password?}', function (string $name, string $taxid, string $password = 'senha não informada!') {
 
     echo "kkk eae men: $name  - $taxid - $password";

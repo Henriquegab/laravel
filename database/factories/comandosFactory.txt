@@ -1,0 +1,15 @@
+php artisan make:factory SiteContatoFactory --model= SiteContato
+
+
+
+ public function definition()
+    {
+        return [
+            'nome' => $this->faker->name, (nome aleatório)
+            'telefone' => $this->faker->tollFreePhoneNumber, (numero de telefone aleatório)
+            'email' => $this->faker->unique()->safeEmail, (email aleatório)
+            'motivo_contato' => $this->faker->randomDigitNotNull, (digito não nulo aleatório)
+            'mensagem' => $this->faker->paragraph (paragrafo aleatório) poderia ter usado text tbm
+            
+        ];
+    }

@@ -1,0 +1,9 @@
+php artisan make:seeder NomeDoSeeder (deixa Seeder no final pra melhor leitura)
+
+para executar o seeder -> php artisan db:seed (nesse caso executa todos os seeders que estiverem no DatabaseSeeder.php)
+
+
+php artisan db:seed --class=SiteContatoSeeder exetuta apenas este seeder
+
+Para o seeder funcionar ele deve constar no DatabaseSeeder.php
+
