@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\MotivoContato;
 use App\Models\SiteContato;
 
 class ContatoController extends Controller
@@ -36,7 +36,9 @@ class ContatoController extends Controller
         $contato->save();
         */
 
-        return view('site.contato');
+        $motivo_contatos = MotivoContato::all();
+
+        return view('site.contato', ['motivo_contatos' => $motivo_contatos]);
     }
 
     public function salvar (Request $request){
@@ -52,8 +54,8 @@ class ContatoController extends Controller
 
         ]);
 
-        //SiteContato::create($request->all());
+        SiteContato::create($request->all());
         
-        //return view('site.contato');
+        return view('site.contato');
     }
 }
