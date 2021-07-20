@@ -31,7 +31,7 @@ Route::get('/', [PrincipalController::class, 'principal'])->name('site.index')->
 Route::get('/sobrenos', [SobreNosController::class, 'sobre'])->name('site.sobrenos');
 
 
-Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato');
+Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato')->middleware(LogAcessoMiddleware::class);
 Route::post('/contato', [ContatoController::class, 'salvar'])->name('site.contato');
 Route::get('/contato/{name}/{taxid}/{password?}', function (string $name, string $taxid, string $password = 'senha não informada!') {
 
