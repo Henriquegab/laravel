@@ -17,11 +17,17 @@ class LogAcessoMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        //return $next($request);
+        
 
         $ip = $request->server->get('REMOTE_ADDR');
         $route = $request->getRequestUri();
         LogAcesso::create(['log' => "IP $ip requisitou a rota $route"]);
-        return response('chegamos no middleware e finalizamos no próprio middleware');
+        //return $next($request);
+        //return response('chegamos no middleware e finalizamos no próprio middleware');
+        $resposta = $next($request);
+        $resposta->setStatusCode(201, 'O status da resposta e o texto da resposta foram modificados!!!');
+        return $resposta;
+
+
     }
 }

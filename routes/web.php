@@ -43,7 +43,7 @@ Route::get('/login', function () {
 })->name('site.login');
 
 
-Route::prefix('/app')->group(
+Route::middleware('log.acesso','autenticacao:padrao, rooi julia néh')->prefix('/app')->group(
     function () {
 
         Route::get('/fornecedores', [FornecedorController::class, 'index'])->name('app.fornecedor');
