@@ -17,6 +17,7 @@
             <ul>
                 <li><a href="{{route('app.fornecedor.adicionar')}}">Novo</a></li>
                 <li><a href="{{route('app.fornecedor')}}">Consulta</a></li>
+                <li><a href="{{route('app.fornecedor.listar')}}">Listar</a></li>
             </ul>
         </div>
 
