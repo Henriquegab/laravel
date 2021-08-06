@@ -60,6 +60,7 @@ Route::middleware('log.acesso','autenticacao:padrao, rooi julia néh')->prefix('
         Route::post('/fornecedor/listar', [FornecedorController::class, 'listar'])->name('app.fornecedor.listar');
         Route::get('/fornecedor/listar', [FornecedorController::class, 'listar'])->name('app.fornecedor.listar');
         Route::get('/fornecedor/editar/{id}/{msg?}', [FornecedorController::class, 'editar'])->name('app.fornecedor.editar');
+        Route::get('/fornecedor/excluir{id}', [FornecedorController::class, 'excluir'])->name('app.fornecedor.excluir');
         
     }
 
