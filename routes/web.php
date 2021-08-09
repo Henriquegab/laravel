@@ -10,6 +10,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\ProductController;
 
 
 /*
@@ -52,7 +53,13 @@ Route::middleware('log.acesso','autenticacao:padrao, rooi julia néh')->prefix('
         Route::get('/sair', [LoginController::class, 'sair'])->name('app.sair');
         Route::get('/home', [HomeController::class, 'index'])->name('app.home');
         Route::get('/fornecedor', [FornecedorController::class, 'index'])->name('app.fornecedor');
-        Route::get('/produto', [ProdutoController::class, 'index'])->name('app.produto');
+
+        /*Route::get('/produto', [ProductController::class, 'index'])->name('app.produto');
+        Route::get('/produto/create', [ProductController::class, 'create'])->name('app.produto.create');*/
+       
+
+        Route::resource('produto', ProductController::class);
+
         Route::get('/cliente', [ClienteController::class, 'index'])->name('app.cliente');
 
         Route::get('/fornecedor/adicionar', [FornecedorController::class, 'adicionar'])->name('app.fornecedor.adicionar');
