@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Fornecedor;
+use App\Models\Unidade;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -31,7 +32,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        echo 'create';
+        $unidades = Unidade::all();
+        return view('app.produto.create', ['unidades' => $unidades]);
     }
 
     /**
@@ -42,7 +44,48 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        echo 'store';
+        $regras = [ 
+
+            'nome' => 'required|min:3|max:40',
+            'descricao' => 'required|min:3|max:2000',
+            'peso' => 'required|integer',
+            'unidade_id' => 'exists:unidades,id'
+
+
+
+        ];
+
+        $feedback = [
+              'required' => 'O campo :attribute deve ser preenchido',
+              'nome.min' => 'O campo nome deve ter no mínimo 3 caracteres',
+              'nome.max' => 'O campo nome deve ter no máximo 40 caracteres',
+              'descricao.min' => 'O campo descricao deve ter no mínimo 3 caracteres',
+              'descricao.max' => 'O campo descricao deve ter no máximo 2000 caracteres',
+              'peso.integer' => 'O campo peso deve ser um número inteiro',
+              'unidade_id.exists' => 'A unidade de medida informada não existe'
+              
+
+
+
+        ];
+
+        $request->validate($regras, $feedback);
+        Product::create($request->all());
+
+        /*
+
+        Se quiser ir um por um em vez de todos pelo metodo create
+        
+        $produto = new Product();         
+        $nome = $request->get('nome');
+        $descricao = $request->get('descricao');
+        $produto->nome = $nome;
+        $produto->descricao = $descricao;
+
+        $produto->save();
+        */
+        return redirect()->route('produto.index');
+    
     }
 
     /**
