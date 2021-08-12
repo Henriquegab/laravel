@@ -94,9 +94,11 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Product $produto)
     {
-        echo 'show';
+        
+        return view('app.produto.show', ['produto' => $produto]);
+    
     }
 
     /**
@@ -105,9 +107,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Product $produto)
     {
-        echo 'edit';
+        $unidades = Unidade::all();
+       return view('app.produto.edit', ['produto' => $produto, 'unidades' => $unidades]);
     }
 
     /**
@@ -117,7 +120,7 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Product $produto)
     {
         echo 'update';
     }
@@ -128,7 +131,7 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Product $produto)
     {
         echo 'destroy';
     }
