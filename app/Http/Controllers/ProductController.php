@@ -122,7 +122,10 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $produto)
     {
-        echo 'update';
+       // $request->all(); payload - são as informações que foram colocadas nesse formulário agora
+       // $produto; //instancia do objeto no estado anterior - São as informações que estão no banco de dados
+       $produto->update($request->all());
+       return redirect()->route('produto.show', ['produto' => $produto->id]);
     }
 
     /**
@@ -134,5 +137,8 @@ class ProductController extends Controller
     public function destroy(Product $produto)
     {
         echo 'destroy';
+        $produto->delete();
+        return redirect()->route('produto.index', ['produto' => $produto->id]);
+
     }
 }

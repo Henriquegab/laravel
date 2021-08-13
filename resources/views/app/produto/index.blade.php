@@ -43,9 +43,28 @@
                                 <td>{{$produto->descricao}}</td>
                                 <td>{{$produto->peso}}</td>
                                 <td>{{$produto->unidade_id}}</td>
-                                <td><a href="{{ route('produto.show', ['produto' => $produto->id]) }}"> Visualizar</a></td>
-                                <td><a href=""> Excluir</a></td>
-                                <td><a href="{{ route('produto.edit', ['produto' => $produto->id]) }}">Editar</a></td>
+                                <td>
+                                
+                                    <form action="{{ route('produto.show', ['produto' => $produto->id]) }}">
+                                        <button type="submit" class="borda-preta">Visualizar</button>
+                                    </form>
+                                
+                                </td>
+                                <td>
+                                    
+                                    <form method="post" action="{{ route('produto.destroy', ['produto' => $produto->id]) }}">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="submit" class="borda-preta">Excluir</button>
+                                    </form>
+                            
+                                </td>
+                                <td>
+                                    <form action="{{ route('produto.edit', ['produto' => $produto->id]) }}">
+                                        <button type="submit" class="borda-preta">Editar</button>
+                                    </form>
+                                
+                                </td>
                             </tr>
                          @endforeach
                     </tbody>

@@ -16,8 +16,7 @@
         <div class="menu">
             <ul>
                 <li><a href="{{ route('produto.index') }}">voltar</a></li>
-                <li><a href="">Consulta</a></li>
-                <li><a href="">Listar</a></li>
+                
             </ul>
         </div>
 
