@@ -9,7 +9,7 @@ use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClienteController;
-use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\ProdutoDetalheController;
 use App\Http\Controllers\ProductController;
 
 
@@ -57,8 +57,12 @@ Route::middleware('log.acesso','autenticacao:padrao, rooi julia néh')->prefix('
         /*Route::get('/produto', [ProductController::class, 'index'])->name('app.produto');
         Route::get('/produto/create', [ProductController::class, 'create'])->name('app.produto.create');*/
        
-
+        //produtos
         Route::resource('produto', ProductController::class);
+
+        //produtos detalhes
+
+        Route::resource('produto-detalhe', ProdutoDetalheController::class);
 
         Route::get('/cliente', [ClienteController::class, 'index'])->name('app.cliente');
 

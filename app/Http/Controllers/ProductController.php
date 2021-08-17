@@ -44,12 +44,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        
         $regras = [ 
 
             'nome' => 'required|min:3|max:40',
             'descricao' => 'required|min:3|max:2000',
             'peso' => 'required|integer',
-            'unidade_id' => 'exists:unidades,id'
+            'unidade_id' => 'exists:produtos,unidade_id'
 
 
 
@@ -111,6 +112,7 @@ class ProductController extends Controller
     {
         $unidades = Unidade::all();
        return view('app.produto.edit', ['produto' => $produto, 'unidades' => $unidades]);
+       //return view('app.produto.create', ['produto' => $produto, 'unidades' => $unidades]);
     }
 
     /**
@@ -124,6 +126,37 @@ class ProductController extends Controller
     {
        // $request->all(); payload - são as informações que foram colocadas nesse formulário agora
        // $produto; //instancia do objeto no estado anterior - São as informações que estão no banco de dados
+
+       $regras = [ 
+
+        'nome' => 'required|min:3|max:40',
+        'descricao' => 'required|min:3|max:2000',
+        'peso' => 'required|integer',
+        'unidade_id' => 'exists:produtos,unidade_id'
+
+
+
+    ];
+
+    $feedback = [
+          'required' => 'O campo :attribute deve ser preenchido',
+          'nome.min' => 'O campo nome deve ter no mínimo 3 caracteres',
+          'nome.max' => 'O campo nome deve ter no máximo 40 caracteres',
+          'descricao.min' => 'O campo descricao deve ter no mínimo 3 caracteres',
+          'descricao.max' => 'O campo descricao deve ter no máximo 2000 caracteres',
+          'peso.integer' => 'O campo peso deve ser um número inteiro',
+          'unidade_id.exists' => 'A unidade de medida informada não existe'
+          
+
+
+
+    ];
+
+    $request->validate($regras, $feedback);
+    //Product::create($request->all());
+
+
+      
        $produto->update($request->all());
        return redirect()->route('produto.show', ['produto' => $produto->id]);
     }
