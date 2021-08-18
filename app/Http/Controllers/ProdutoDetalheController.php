@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProdutoDetalhe;
+use App\Models\Unidade;
 use Illuminate\Http\Request;
 
 class ProdutoDetalheController extends Controller
@@ -13,7 +15,7 @@ class ProdutoDetalheController extends Controller
      */
     public function index()
     {
-        //
+        echo 'index';
     }
 
     /**
@@ -23,7 +25,8 @@ class ProdutoDetalheController extends Controller
      */
     public function create()
     {
-        //
+        $unidades = Unidade::all();
+        return view('app.produto_detalhe.create', ['unidades'=>$unidades]);
     }
 
     /**
@@ -34,7 +37,8 @@ class ProdutoDetalheController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        ProdutoDetalhe::create($request->all());
+        echo 'cadastrado!';
     }
 
     /**
@@ -45,30 +49,32 @@ class ProdutoDetalheController extends Controller
      */
     public function show($id)
     {
-        //
+        echo 'show';
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  App\Models\ProdutoDetalhe $produtoDetalhe
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ProdutoDetalhe $produtoDetalhe)
     {
-        //
+        $unidades = Unidade::all();
+        return view('app.produto_detalhe.edit', ['produto_detalhe' => $produtoDetalhe, 'unidades' =>$unidades]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  App\Models\ProdutoDetalhe $produtoDetalhe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, ProdutoDetalhe $produtoDetalhe)
     {
-        //
+        $produtoDetalhe->update($request->all());
+        echo 'Atualizada!';
     }
 
     /**
@@ -79,6 +85,6 @@ class ProdutoDetalheController extends Controller
      */
     public function destroy($id)
     {
-        //
+        echo 'destroy';
     }
 }
