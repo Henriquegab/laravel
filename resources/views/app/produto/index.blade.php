@@ -23,6 +23,8 @@
 
         <div class="informacao-pagina">
             <div style="width: 90%; margin-left: auto; margin-right: auto;">
+                
+
                 <table border="1" width="100%">
                     <thead>
                         <tr>    
@@ -46,9 +48,9 @@
                                 <td>{{$produto->descricao}}</td>
                                 <td>{{$produto->peso}}</td>
                                 <td>{{$produto->unidade_id}}</td>
-                                <td>{{ $produto->comprimento ?? '' }}</td>
-                                <td>{{ $produto->altura ?? '' }}</td>
-                                <td>{{ $produto->largura ?? '' }}</td>
+                                <td>{{ $produto->itemDetalhe->comprimento ?? '' }}</td>
+                                <td>{{ $produto->itemDetalhe->altura ?? '' }}</td>
+                                <td>{{ $produto->itemDetalhe->largura ?? '' }}</td>
                                 <td>
                                 
                                     <form action="{{ route('produto.show', ['produto' => $produto->id]) }}">

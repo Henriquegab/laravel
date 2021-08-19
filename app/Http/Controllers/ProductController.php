@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Fornecedor;
 use App\Models\Unidade;
+use App\Models\Item;
 use App\Models\ProdutoDetalhe;
 use Illuminate\Http\Request;
 
@@ -19,8 +20,8 @@ class ProductController extends Controller
     {
 
         
-            $produtos = Product::paginate(10);
-                
+            $produtos = Item::with(['itemDetalhe'])->paginate(10);
+            /*    
            foreach ($produtos as $key => $produto) {
               // print_r($produto->getAttributes());
                echo '<br><br>' ;
@@ -36,7 +37,7 @@ class ProductController extends Controller
                 }
                // echo'<hr>';
            }
-           
+           */
             return view('app.produto.index', ['produtos' => $produtos, 'request' => $request->all()]);
         
     }
