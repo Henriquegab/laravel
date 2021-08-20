@@ -39,7 +39,7 @@ class ProdutoDetalheController extends Controller
     public function store(Request $request)
     {
         ProdutoDetalhe::create($request->all());
-        echo 'cadastrado!';
+        return redirect()->route('produto.index');
     }
 
     /**

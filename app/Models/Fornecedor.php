@@ -12,6 +12,13 @@ class Fornecedor extends Model
     use SoftDeletes;
     protected $table = 'fornecedors';
     protected $fillable = ['nome', 'site', 'uf', 'email'];
+
+    public function produtos(){
+
+        return $this->hasMany('App\Models\Item', 'fornecedor_id', 'id');
+        //return $this->hasMany('App\Models\Item');
+    }
+
     //PROTECTED $TABLE = 'fornecedores';
 
     /*$insert->nome = 'nome';
