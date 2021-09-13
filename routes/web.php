@@ -11,6 +11,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProdutoDetalheController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\PedidoProdutoController;
 
 
 /*
@@ -64,9 +66,9 @@ Route::middleware('log.acesso','autenticacao:padrao, rooi julia néh')->prefix('
 
         Route::resource('produto-detalhe', ProdutoDetalheController::class);
 
-        Route::resource('cliente', 'ClienteController');
-        Route::resource('pedido', 'PedidoController');
-        Route::resource('pedido-produto', 'PedidoProdutoController');
+        Route::resource('cliente', ClienteController::class);
+        Route::resource('pedido', PedidoController::class);
+        Route::resource('pedido-produto', PedidoProdutoController::class);
 
         
 
