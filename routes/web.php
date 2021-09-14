@@ -68,9 +68,9 @@ Route::middleware('log.acesso','autenticacao:padrao, rooi julia néh')->prefix('
 
         Route::resource('cliente', ClienteController::class);
         Route::resource('pedido', PedidoController::class);
-        Route::resource('pedido-produto', PedidoProdutoController::class);
-
-        
+        //Route::resource('pedido-produto', PedidoProdutoController::class);
+        Route::get('pedido-produto/create/{pedido}', [PedidoProdutoController::class, 'create'])->name('pedido-produto.create');
+        Route::post('pedido-produto/store/{pedido}', [PedidoProdutoController::class, 'store'])->name('pedido-produto.store');
 
         Route::get('/fornecedor/adicionar', [FornecedorController::class, 'adicionar'])->name('app.fornecedor.adicionar');
         Route::post('/fornecedor/adicionar', [FornecedorController::class, 'adicionar'])->name('app.fornecedor.adicionar');

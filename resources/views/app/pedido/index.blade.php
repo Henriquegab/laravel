@@ -42,7 +42,13 @@
                             <tr>    
                                 <td>{{$pedido->id}}</td>
                                 <td>{{$pedido->cliente_id}}</td>
-                               
+                                <td>
+
+                                    <form action="{{ route('pedido-produto.create', ['pedido' => $pedido->id]) }}">
+                                        <button type="submit" class="borda-preta">Adicionar Produtos</button>
+                                    </form>
+
+                                </td>
                                
                                 <td>
                                 
