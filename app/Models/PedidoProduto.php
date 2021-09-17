@@ -10,4 +10,5 @@ class PedidoProduto extends Model
     use HasFactory;
 
     protected $table = 'pedidos_produtos';
+    protected $fillable = ['id', 'produto_id', 'pedido_id'];
 }
