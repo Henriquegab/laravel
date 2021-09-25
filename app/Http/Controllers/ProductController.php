@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Produto;
 use App\Models\Fornecedor;
 use App\Models\Unidade;
 use App\Models\Item;
@@ -96,7 +96,7 @@ class ProductController extends Controller
 
         Se quiser ir um por um em vez de todos pelo metodo create
         
-        $produto = new Product();         
+        $produto = new Produto);         
         $nome = $request->get('nome');
         $descricao = $request->get('descricao');
         $produto->nome = $nome;
@@ -111,10 +111,10 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Produto  $produto
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $produto)
+    public function show(Produto $produto)
     {
         
         return view('app.produto.show', ['produto' => $produto]);
@@ -124,10 +124,10 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Produto  $produto
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $produto)
+    public function edit(Produto $produto)
     {
         $unidades = Unidade::all();
         $fornecedores = Fornecedor::all();
@@ -175,7 +175,7 @@ class ProductController extends Controller
     ];
 
     $request->validate($regras, $feedback);
-    //Product::create($request->all());
+    //Produto::create($request->all());
 
 
       
@@ -186,10 +186,10 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Produto  $produto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $produto)
+    public function destroy(Produto $produto)
     {
         echo 'destroy';
         $produto->delete();

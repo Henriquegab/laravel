@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Product;
+use App\Models\Produto;
 
-class ProductSeeder extends Seeder
+class ProdutoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        Product::create(['nome' => 'Iphone', 'descricao' => 'Iphone é caro bixx','peso' => 1,'unidade_id' => 1,]);
+        Produto::create(['nome' => 'Iphone', 'descricao' => 'Iphone é caro bixx','peso' => 1,'unidade_id' => 1,]);
     }
 }
