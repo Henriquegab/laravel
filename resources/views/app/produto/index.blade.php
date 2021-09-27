@@ -78,6 +78,16 @@
                                 
                                 </td>
                             </tr>
+                            <tr>
+                                <td colspan="12">
+
+                                    <p>Pedidos</p>
+
+                                    @foreach ($produto->pedidos as $pedido)
+                                      {{ $pedido }}
+                                    @endforeach
+                                </td>
+                            </tr>
                          @endforeach
                     </tbody>
                
