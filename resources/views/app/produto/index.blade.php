@@ -84,7 +84,7 @@
                                     <p>Pedidos</p>
 
                                     @foreach ($produto->pedidos as $pedido)
-                                      {{ $pedido }}
+                                      <a href="{{ route('pedido-produto.create', ['pedido' => $pedido->id]) }}">Pedido: {{ $pedido->id }},</a>
                                     @endforeach
                                 </td>
                             </tr>
