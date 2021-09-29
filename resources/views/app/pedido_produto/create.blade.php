@@ -39,7 +39,7 @@
                             <th>ID</th>
                             <th>Nome do produto</th>
                             <th>Data de inclusão do item no pedido</th>
-                            <th></th>
+                            <th>Exlusão de Itens</th>
 
                         </tr>
                     </thead>
